@@ -1,1 +1,1 @@
-web: gunicorn tmpresserver.wsgi
+web: gunicorn backend.config.wsgi
