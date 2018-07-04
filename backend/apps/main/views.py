@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from django.views.generic.edit import FormView
 
-# Create your views here.
+from .forms.upload_file import UploadFileForm
+
+
+class UploadFileView(FormView):
+    template_name = "main/index.html"
+    form_class = UploadFileForm
+    success_url = "/admin/"
