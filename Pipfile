@@ -5,9 +5,10 @@ name = "pypi"
 
 [packages]
 django = "*"
+django-debug-toolbar = "*"
 django-heroku = "*"
-gunicorn = "*"
 django-rest-swagger = "*"
+gunicorn = "*"
 
 [dev-packages]
 "flake8" = "*"
