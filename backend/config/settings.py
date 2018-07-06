@@ -104,7 +104,4 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 
-django_heroku.settings(locals())  # adasd asd
-
-# adasdasd asd
-# asdasd a ds
+django_heroku.settings(locals())
