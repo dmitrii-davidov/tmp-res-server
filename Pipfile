@@ -7,11 +7,14 @@ name = "pypi"
 django = "*"
 django-heroku = "*"
 gunicorn = "*"
+django-rest-swagger = "*"
 
 [dev-packages]
+"flake8" = "*"
+"flake8-commas" = "*"
+pep8-naming = "*"
 pylint = "*"
 yapf = "*"
-"flake8" = "*"
 
 [requires]
 python_version = "3.6"

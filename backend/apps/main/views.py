@@ -23,6 +23,7 @@ class UploadImageView(FormView):
 
 
 class DownloadImageView(View):
+
     def get(self, request):
         response = FileResponse(d['content'], content_type=d['content-type'])
         response['Content-Disposition'] = 'attachment; filename=' + d['name']
