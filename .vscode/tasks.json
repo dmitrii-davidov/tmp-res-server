@@ -1,6 +1,4 @@
 {
-  // See https://go.microsoft.com/fwlink/?LinkId=733558
-  // for the documentation about the tasks.json format
   "version": "2.0.0",
   "tasks": [
     {
@@ -11,7 +9,3 @@
     }
   ]
 }
-
-
-// "(yapf -ri ./backend) -AND (isort -rc ./backend) -AND (flake8 ./backend)"
-// "yapf -dr ./backend; echo $lastexitcode"
