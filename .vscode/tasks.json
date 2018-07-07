@@ -2,9 +2,15 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Backend: Check & Fix",
+      "label": "Backend: Healthcheck",
       "type": "shell",
-      "command": "./scripts/backend_check.bat",
+      "command": "pipenv run python ./scripts/healthcheck.py ./backend",
+      "problemMatcher": []
+    },
+    {
+      "label": "Backend: Healthcheck-Fix",
+      "type": "shell",
+      "command": "pipenv run python ./scripts/healthcheck.py --fix ./backend",
       "problemMatcher": []
     }
   ]
