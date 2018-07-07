@@ -1,1 +1,1 @@
-web: cd backend && gunicorn config.wsgi
+web: cd backend && gunicorn pj.wsgi
