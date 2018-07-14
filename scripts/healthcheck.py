@@ -65,8 +65,8 @@ class YAPFTool(Tool):
 class PyLintTool(Tool):
     command = 'pylint'
 
-    def _get_arguments(self, fix):  # pylint:disable=W0613
-        return ['--errors-only']
+    def _get_arguments(self, fix):
+        return ['--errors-only'] if not fix else []
 
 
 class Flake8Tool(Tool):
