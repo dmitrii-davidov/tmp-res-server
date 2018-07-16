@@ -1,4 +1,9 @@
+/.venv
+/build
+/coverage
 /node_modules
+
+*/staticfiles
 
 *.pyc
 *.sqlite3
