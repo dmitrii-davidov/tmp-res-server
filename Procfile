@@ -1,2 +1,1 @@
-release: npm run-script build && python backend/manage.py collectstatic --noinput
-web: cd backend && gunicorn pj.wsgi
+web: npm run-script build && cd backend && python manage.py collectstatic --noinput && gunicorn pj.wsgi
