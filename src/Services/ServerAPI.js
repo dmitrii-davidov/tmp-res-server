@@ -4,12 +4,14 @@ import api from 'apisauce';
 export default class ServerAPI {
   constructor() {
     this._api = api.create({
-      baseURL: 'http://localhost:3000/',
+      baseURL: 'http://localhost:3000/api/',
       timeout: 10000,
     });
   }
 
-  uploadFile() {
-    return this._api.get('manifest.json');
+  uploadFile({file}) {
+    const data = new FormData();
+    data.append('file', file);
+    return this._api.post('resources/', data);
   }
 }

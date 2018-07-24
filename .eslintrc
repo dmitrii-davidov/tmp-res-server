@@ -22,6 +22,7 @@
     }
   },
   "rules": {
+    "class-methods-use-this": "off",
     "react/forbid-prop-types": ["error", {
       "forbid": ["any"],
       "checkContextTypes": true,

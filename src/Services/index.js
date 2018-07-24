@@ -1,4 +1,4 @@
 import ServerAPI from './ServerAPI';
 
 
-export const serverAPI = ServerAPI();
+export const serverAPI = new ServerAPI();
