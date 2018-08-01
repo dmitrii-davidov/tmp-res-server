@@ -1,32 +1,37 @@
 from rest_framework.viewsets import ViewSet
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response
+from rest_framework import status
 from django.http import HttpResponse
 
-files = []
+from .repositories import ImageRepository
 
 
 class ResourceViewSet(ViewSet):
 
     parser_classes = [MultiPartParser, FormParser]
 
+    def _image_repository(self) -> ImageRepository:
+        return ImageRepository()
+
     def create(self, request):
-        print(request.data)
-        f = request.data['file']
-        d = {}
-        d['content'] = f.read()
-        d['content-type'] = f.content_type
-        d['name'] = f.name
-        files.append(d)
-        return Response({'id': len(files) - 1}, 200)
+        data = request.data
+        f = data['file']
+        image = self._image_repository().create_image(
+            content=f.read(),
+            content_type=f.content_type,
+        )
+        return Response(
+            {
+                'hashedID': image.hashed_id,
+            },
+            status=status.HTTP_201_CREATED,
+        )
 
     def retrieve(self, request, pk=None):
-        if pk is None:
-            return Response(status=404)
-        pk = int(pk)
-        if pk >= len(files):
-            return Response(status=404)
-        d = files[pk]
-        response = HttpResponse(d['content'], content_type=d['content-type'])
-        response['Content-Disposition'] = 'attachment; filename=' + d['name']
+        image = self._image_repository().get_image(pk)
+        if image is None:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        response = HttpResponse(image.content, content_type=image.content_type)
+        response['Content-Disposition'] = 'attachment; filename=image'
         return response

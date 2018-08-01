@@ -16,7 +16,7 @@ export default class UploadForm extends React.Component {
       file: event.target.files[0],
     }).then((res) => {
       this.setState({
-        imageURL: `http://localhost:3000/api/resources/${res.data.id}/`,
+        imageURL: `http://localhost:3000/api/resources/${res.data.hashedID}/`,
       });
     });
   }

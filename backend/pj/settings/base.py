@@ -22,6 +22,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     "apps.api",
     "apps.main",
+    "apps.react",
     "apps.res",
     "django.contrib.admin",
     "django.contrib.auth",
