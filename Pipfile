@@ -16,6 +16,7 @@ gunicorn = "*"
 pep8-naming = "*"
 pylint = "*"
 yapf = "*"
+pylint-django = "*"
 
 [requires]
 python_version = "3.6"

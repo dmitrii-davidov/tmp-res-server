@@ -10,7 +10,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 const container = document.getElementById('root');
 if (!container) {
-  throw Error('container should be not null!');
+  throw Error('Container should be not null!');
 }
 ReactDOM.render(<App />, container);
 registerServiceWorker();

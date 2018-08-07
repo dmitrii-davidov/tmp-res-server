@@ -12,6 +12,6 @@ export default class ServerAPI {
   uploadFile({file}) {
     const data = new FormData();
     data.append('file', file);
-    return this._api.post('resources/', data);
+    return this._api.post('resources/images/', data);
   }
 }

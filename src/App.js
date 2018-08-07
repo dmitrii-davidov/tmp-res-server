@@ -1,24 +1,20 @@
 /* @flow */
 
 import React from 'react';
+import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom';
 
-import logo from './logo.svg';
-import './App.css';
-
-import UploadForm from 'Components/UploadForm';
+import {Route as Main} from 'Modules/Main';
+import {Route as Preview} from 'Modules/Preview';
 
 
 const App = () => (
-  <div className="App">
-    <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <h1 className="App-title">Welcome to React</h1>
-    </header>
-    <UploadForm />
-    {/* <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-    </p> */}
-  </div>
+  <Router>
+    <Switch>
+      <Route exact path="/" component={Main} />
+      <Route path="/preview" component={Preview} />
+      <Redirect to="/" />
+    </Switch>
+  </Router>
 );
 
 export default App;

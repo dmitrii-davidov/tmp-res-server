@@ -23,7 +23,7 @@ INSTALLED_APPS = [
     "apps.api",
     "apps.main",
     "apps.react",
-    "apps.res",
+    "apps.resources",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",

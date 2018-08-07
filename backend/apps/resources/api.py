@@ -1,13 +1,14 @@
-from rest_framework.viewsets import ViewSet
-from rest_framework.parsers import MultiPartParser, FormParser
-from rest_framework.response import Response
-from rest_framework import status
 from django.http import HttpResponse
+from rest_framework import status
+from rest_framework.parsers import FormParser, MultiPartParser
+from rest_framework.response import Response
+from rest_framework.routers import DefaultRouter
+from rest_framework.viewsets import ViewSet
 
 from .repositories import ImageRepository
 
 
-class ResourceViewSet(ViewSet):
+class ImageViewSet(ViewSet):
 
     parser_classes = [MultiPartParser, FormParser]
 
@@ -17,13 +18,13 @@ class ResourceViewSet(ViewSet):
     def create(self, request):
         data = request.data
         f = data['file']
-        image = self._image_repository().create_image(
+        image = self._image_repository().add_image(
             content=f.read(),
             content_type=f.content_type,
         )
         return Response(
             {
-                'hashedID': image.hashed_id,
+                'hashedID': image.id,
             },
             status=status.HTTP_201_CREATED,
         )
@@ -35,3 +36,7 @@ class ResourceViewSet(ViewSet):
         response = HttpResponse(image.content, content_type=image.content_type)
         response['Content-Disposition'] = 'attachment; filename=image'
         return response
+
+
+router = DefaultRouter()
+router.register('images', ImageViewSet, base_name='image')
