@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
+import {Container, Form, FormGroup, FormText, Jumbotron, Input, Label} from 'Components/Base';
 import {serverAPI} from 'Services';
 
 
@@ -33,14 +34,27 @@ export default class Main extends React.PureComponent {
     }
     return (
       <div>
-        <div>
-          <input type="file" onChange={event => this.handleFileHasBeenChanged(event)} />
-        </div>
-        {this.state.imageID &&
-          <Link to={`/preview/${this.state.imageID}`}>
-            <div>link</div>
-          </Link>
-        }
+        <Jumbotron className="text-center">
+          <h1>Temporary Resource Server</h1>
+          <p>It's dangerous to go alone! Use this.</p>
+        </Jumbotron>
+        <Container>
+          <Form>
+            <FormGroup>
+              <Label>
+                Upload a new image
+              </Label>
+              <Input type="file" onChange={event => this.handleFileHasBeenChanged(event)} />
+              <FormText>
+                {this.state.imageID &&
+                <Link to={`/preview/${this.state.imageID}`}>
+                  link
+                </Link>
+                }
+              </FormText>
+            </FormGroup>
+          </Form>
+        </Container>
       </div>
     );
   }
