@@ -4,7 +4,7 @@ import api from 'apisauce';
 export default class ServerAPI {
   constructor() {
     this._api = api.create({
-      baseURL: 'http://localhost:3000/api/',
+      baseURL: '/api/',
       timeout: 10000,
     });
   }
