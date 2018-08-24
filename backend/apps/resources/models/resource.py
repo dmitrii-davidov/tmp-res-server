@@ -12,6 +12,7 @@ from django.db.models import (
 class BinaryField(_BinaryField):
 
     def to_python(self, value):
+        raise Exception([type(value), value])
         v = super().to_python(value)
         if isinstance(v, memoryview):
             return v.obj
