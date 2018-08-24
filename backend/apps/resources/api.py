@@ -35,6 +35,7 @@ class ImageViewSet(ViewSet):
             return Response(status=status.HTTP_404_NOT_FOUND)
         content = image.content
         if isinstance(content, memoryview):
+            raise Exception([content, content.obj])
             content = content.obj
         response = HttpResponse(content, content_type=image.content_type)
         response['Content-Disposition'] = 'attachment; filename=image'
