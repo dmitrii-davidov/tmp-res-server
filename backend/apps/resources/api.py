@@ -18,10 +18,8 @@ class ImageViewSet(ViewSet):
     def create(self, request):
         data = request.data
         f = data['file']
-        content = f.read()  # 1
-        raise Exception((type(content), content))
         image = self._image_repository().add_image(
-            content=content,
+            content=f.read(),
             content_type=f.content_type,
         )
         return Response(
@@ -33,7 +31,6 @@ class ImageViewSet(ViewSet):
 
     def retrieve(self, request, pk=None):
         image = self._image_repository().get_image(pk)
-        raise Exception((type(image.content), image.content))
         if image is None:
             return Response(status=status.HTTP_404_NOT_FOUND)
         response = HttpResponse(image.content, content_type=image.content_type)
