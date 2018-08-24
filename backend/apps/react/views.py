@@ -13,5 +13,6 @@ class ReactView(View):
     def get(self, request):
         name = request.path[1:]
         name = self.files.get(name, name)
+        raise Exception(1)
         with open(os.path.join(settings.REACT_APP_DIR, 'build', name)) as f:
             return HttpResponse(f.read())
