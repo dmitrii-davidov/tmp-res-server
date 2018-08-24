@@ -18,8 +18,10 @@ class ImageViewSet(ViewSet):
     def create(self, request):
         data = request.data
         f = data['file']
+        content = f.read()
+        raise Exception()
         image = self._image_repository().add_image(
-            content=f.read(),
+            content=content,
             content_type=f.content_type,
         )
         return Response(
