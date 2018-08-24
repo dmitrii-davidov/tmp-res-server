@@ -31,7 +31,7 @@ class ImageViewSet(ViewSet):
 
     def retrieve(self, request, pk=None):
         image = self._image_repository().get_image(pk)
-        raise Exception(image)
+        raise Exception(image.__dict__)
         if image is None:
             return Response(status=status.HTTP_404_NOT_FOUND)
         response = HttpResponse(image.content, content_type=image.content_type)
