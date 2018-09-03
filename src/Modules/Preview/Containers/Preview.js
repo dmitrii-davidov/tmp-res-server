@@ -1,5 +1,6 @@
 import React from 'react';
 import {Redirect} from 'react-router-dom';
+import pt from 'prop-types';
 
 
 // const Preview = ({match}) => <img src={`/api/resources/images/${match.params.id}/`} onError={e => console.error(e)} />;
@@ -11,6 +12,7 @@ class Preview extends React.Component {
     this.state = {
       loadingError: null,
     };
+    this.handleLoadingError = this.handleLoadingError.bind(this);
   }
 
   handleLoadingError(error) {
@@ -23,10 +25,13 @@ class Preview extends React.Component {
     }
     return (<img
       src={`/api/resources/images/${this.props.match.params.id}/`}
-      onError={error => this.handleLoadingError(error)}
+      onError={this.handleLoadingError}
       alt="preview"
     />);
   }
 }
+Preview.propTypes = {
+  match: pt.object.isRequired,
+};
 
 export default Preview;
