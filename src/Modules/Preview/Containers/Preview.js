@@ -3,8 +3,6 @@ import {Redirect} from 'react-router-dom';
 import pt from 'prop-types';
 
 
-// const Preview = ({match}) => <img src={`/api/resources/images/${match.params.id}/`} onError={e => console.error(e)} />;
-
 class Preview extends React.Component {
   constructor(props) {
     super(props);
